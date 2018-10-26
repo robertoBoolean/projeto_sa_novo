@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Editar Turma</title>
+    </h:head>
+    <h:body>
+        <h:outputLabel value="nome:" />
+        <h:inputText value="#{turmaBean.turma.nome}"/>
+        <br/> 
+        <p:selectOneMenu id="turmas" value="#{turmaBean.turma.periodo}" >          
+            <f:selectItems value="#{turmaBean.periodos}" var="umPeriodo" itemLabel="#{umPeriodo.nome}"/>
+        </p:selectOneMenu>
+        <br></br>
+        
+        <h:outputLabel value="dataInicio:" />
+        <p:calendar id="dataInicio" value="#{turmaBean.turma.dataInicio}" />
+        <br></br>
+        <h:outputLabel value="dataFim:" /> 
+        <p:calendar id="dataFim" value="#{turmaBean.turma.dataFim}" />
+        <br></br>
+        <h:commandButton action="#{turmaBean.salvar}" value="Enviar" />
+        
+    </h:body>
+    
+    
+</html>
+
