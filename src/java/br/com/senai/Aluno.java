@@ -1,6 +1,7 @@
 package br.com.senai;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +14,16 @@ public class Aluno implements Serializable{
     private Integer id;
     private String nome;
     private String matricula;
-    private String nascimento;
+    private Date nascimento;
     private String turma;
+
+    public Date getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
+    }
 
     public Integer getId() {
         return id;
@@ -38,14 +47,6 @@ public class Aluno implements Serializable{
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
-    }
-
-    public String getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
     }
 
     public String getTurma() {

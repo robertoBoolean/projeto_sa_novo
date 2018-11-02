@@ -10,23 +10,26 @@
         <p:fieldset legend="Editar Aluno selecionado">
             <p:panelGrid columns="2">
                 <h:outputLabel value="Nome" />    
-                <p:inputText required="true" value="#{alunoBean.aluno.nome}">
-                    <f:validateLength minimum="2" />
-                <p:inputText/>
+                <p:inputText required="true" id="inputNomeAluno" value="#{alunoBean.aluno.nome}">
+                    <f:validator validatorId="validaImputString"/>
+                </p:inputText>                
                 <h:outputLabel value="Nascimento" />
-                <p:inputMask mask="99/99/9999" value="#{alunoBean.aluno.nascimento}" />
+                <p:calendar value="#{alunoBean.aluno.nascimento}" /> 
                 <h:outputLabel value="Matrícula" />
                 <p:inputMask mask="9?99" value="#{alunoBean.aluno.matricula}" />
                 <h:outputLabel value="Turma" />
                 <p:inputMask mask="9?99" value="#{alunoBean.aluno.turma}" />
             </p:panelGrid>
+            <p:panel>
+                <h:message for="inputNomeAluno" style="color:red" />
+            </p:panel>
             <p:toolbar>
                 <p:toolbarGroup>
                     <p:commandButton value="Editar" action="#{alunoBean.adicionarAluno}" update="@form" />
                     <p:commandButton value="Cancelar" action="#{alunoBean.cancelarAluno()}" update="@form" />
                 </p:toolbarGroup>
             </p:toolbar>
+            
         </p:fieldset>
     </h:form>
 </ui:decorate>
-  
