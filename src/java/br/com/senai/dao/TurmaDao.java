@@ -28,14 +28,14 @@ public  Turma salvarTurma (Turma turma){
         Criteria crit = session.createCriteria(Turma.class);
         return crit.list();
     }
-   public List<Periodo> getAllPeriodo(){
+   public List<Periodo> getAllPeriodos(){
        Session session = HibernateUtil.getSessionFactory().openSession();
        Criteria crit = session.createCriteria(Periodo.class);
        return crit.list();
    }
 
-    public void salvar(Turma turma) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    public void salvar(Turma turma) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 }
 

@@ -2,12 +2,13 @@ package br.com.senai;
 
 import java.io.Serializable;
 /*import java.util.Date;*/
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 
 @Entity
@@ -20,7 +21,9 @@ public class Turma implements Serializable {
     @ManyToOne
     Periodo periodo;
     
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataInicio;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataFim;
 
     public Integer getId() {
