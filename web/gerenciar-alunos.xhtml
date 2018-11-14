@@ -13,12 +13,12 @@
                 <p:inputText required="true" id="inputNomeAluno" value="#{alunoBean.aluno.nome}" >
                     <f:validator validatorId="validaImputString"/>
                 </p:inputText>
-                <h:outputLabel value="Nascimento" />
-                <p:calendar value="#{alunoBean.aluno.nascimento}" />
+                <p:outputLabel for="german" value="nascimento" />
+                <p:calendar required="true" yearRange="c-30:c+30" id="german" value="#{alunoBean.aluno.nascimento}" locale="de" navigator="true" pattern="dd/MM/yyyy" />
                 <h:outputLabel value="Matrícula" />
-                <p:inputMask mask="999" value="#{alunoBean.aluno.matricula}" />
+                <p:inputMask required="true" mask="999" value="#{alunoBean.aluno.matricula}" />
                 <h:outputLabel value="Turma" />
-                <p:inputMask mask="999" value="#{alunoBean.aluno.turma}" />
+                <p:inputMask required="true" mask="999" value="#{alunoBean.aluno.turma}" />
             </p:panelGrid>
             <p:toolbar>
                 <p:toolbarGroup>

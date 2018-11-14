@@ -7,11 +7,17 @@
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              template="template.xhtml">
     <h:form>
+<!--     !!!!!!!!!!!!!!!!!!!!!   ta quebrando!!!!!!!!!!!!!!!!!!!!!!!!-->
         <p:fieldset legend="Editar Curso Selecionado">
             <p:panelGrid columns="2">
-                <h:outputLabel value="Nome" />
                 <p:inputText value="#{cursoBean.curso.nome}" />
+                <p:inputText required="true" id="inputNomeCurso" value="#{cursoBean.curso.nome}">
+                    <f:validator validatorId="validaImputString"/>
+                </p:inputText>      
             </p:panelGrid>
+             <p:panel>
+                <h:message for="inputNomeCurso" style="color:red" />
+            </p:panel>
             <p:toolbar>
                 <p:toolbarGroup>
                     <p:commandButton value="Editar" action="#{cursoBean.adicionarCurso()}" update="@form" />
