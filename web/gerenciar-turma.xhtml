@@ -17,10 +17,14 @@
                     <h:outputText value="#{umaTurma.periodo.nome}" />
                 </p:column>
                 <p:column headerText="Data Inicio">
-                    <h:outputText value="#{umaTurma.dataInicio}" />
+                    <h:outputText value="#{umaTurma.dataInicio}" >
+                     <f:convertDateTime dateStyle="long" pattern="dd/MM/yyyy" />
+                    </h:outputText>
                 </p:column>
                 <p:column headerText="Data Fim" >
-                    <h:outputText value="#{umaTurma.dataFim}" />
+                    <h:outputText value="#{umaTurma.dataFim}" >
+                    <f:convertDateTime dateStyle="long" pattern="dd/MM/yyyy" />
+                    </h:outputText>
                 </p:column>
                 <p:column headerText="Ações">
                     <h:commandButton action="#{turmaBean.editar}" value="Editar">

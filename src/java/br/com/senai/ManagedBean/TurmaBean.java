@@ -53,13 +53,13 @@ public class TurmaBean implements Serializable {
     }
 
     public List<Periodo> getPeriodos() {
-        return new TurmaDao().getAllPeriodo();
+        return new TurmaDao().getAllPeriodos();
     }
-    
-    public String salvar(){
-    TurmaDao dao = new TurmaDao();
-    dao.salvar(turma);
-    return "gerenciar-turma.xhtml";
+
+    public String salvar() {
+        TurmaDao dao = new TurmaDao();
+        dao.salvarTurma(turma);
+        return "gerenciar-turma.xhtml";
     }
 
 }
