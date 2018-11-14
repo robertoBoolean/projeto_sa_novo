@@ -4,20 +4,24 @@
              xmlns:h="http://xmlns.jcp.org/jsf/html"
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              xmlns:p="http://primefaces.org/ui"
-             template="template.xhtml">
+             template="template.xhtml"
+             xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <h:form>
         <p:fieldset legend="Editar Horario">
             <p:panelGrid columns="2">
                 <h:outputLabel value="Nome"/>
-                <p:inputText value="#{gradeHorarioBean.gradeHorario.nome}"/>
-
+                <p:inputText value="#{gradeHorarioBean.gradeHorario.nome}" required="true" id="inputNomeHorario">
+                <f:validator validatorId="validaImputString"/>
+                </p:inputText>      
                 <p:outputLabel for="horaInicio" value="Começa às" />
-                <p:calendar id="horaInicio" value="#{gradeHorarioBean.gradeHorario.hr_inicio}" pattern="HH:mm" timeOnly="true"/>
-
+                <p:calendar required="true" id="horaInicio" value="#{gradeHorarioBean.gradeHorario.hr_inicio}" pattern="HH:mm" timeOnly="true"/>
                 <p:outputLabel for="horaFim" value="Termina às" />
-                <p:calendar id="horaFim" value="#{gradeHorarioBean.gradeHorario.hr_fim}" pattern="HH:mm" timeOnly="true"/>
+                <p:calendar required="true" id="horaFim" value="#{gradeHorarioBean.gradeHorario.hr_fim}" pattern="HH:mm" timeOnly="true"/>
             </p:panelGrid>
+            <p:panel>
+                <h:message for="inputNomeHorario" style="color:red" />
+            </p:panel>
             <p:toolbar>
                 <p:toolbarGroup>
                     <p:commandButton value="Editar" action="#{gradeHorarioBean.adicionarHorario()}" update="@form"/>

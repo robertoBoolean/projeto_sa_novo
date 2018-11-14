@@ -8,26 +8,19 @@
              template="template.xhtml">
     <h:form>
         <p:fieldset legend="Turmas">
-           
                 <p:commandButton value="Adicionar" action="#{turmaBean.novaTurma}" ajax="false" />
-          
-           
-            <p:dataTable value="#{turmaBean.turmas}" var="umaTurma">   
-
+        <p:dataTable value="#{turmaBean.turmas}" var="umaTurma">   
                 <p:column headerText="Nome">
                     <h:outputText value="#{umaTurma.nome}" />
                 </p:column>
-
                 <p:column headerText="Periodo">
                     <h:outputText value="#{umaTurma.periodo.nome}" />
                 </p:column>
-
                 <p:column headerText="Data Inicio">
                     <h:outputText value="#{umaTurma.dataInicio}" >
                      <f:convertDateTime dateStyle="long" pattern="dd/MM/yyyy" />
                     </h:outputText>
                 </p:column>
-
                 <p:column headerText="Data Fim" >
                     <h:outputText value="#{umaTurma.dataFim}" >
                     <f:convertDateTime dateStyle="long" pattern="dd/MM/yyyy" />
