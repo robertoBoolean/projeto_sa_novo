@@ -1,46 +1,43 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Editar Turma</title>
-    </h:head>
     
-<!--    ta dando muito pau , ta quebrado a tela !!!!!!!!!!!!
-    ta dando muito pau , ta quebrado a tela !!!!!!!!!!!!
-    ta dando muito pau , ta quebrado a tela !!!!!!!!!!!!
-    ta dando muito pau , ta quebrado a tela !!!!!!!!!!!!
-    ta dando muito pau , ta quebrado a tela !!!!!!!!!!!!-->
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml">
+    
 
-    <h:body>
-        <h:form>
-            <p:messages/>
-            <h:outputLabel value="nome:" />
-            <h:inputText value="#{turmaBean.turma.nome}"/>
-            <br/> 
-            <p:selectOneMenu id="periodos" value="#{turmaBean.turma.periodo}" >          
-                <f:selectItem itemLabel=""
-                              itemValue=""
-                              noSelectionOption="true" /> 
-                <f:selectItems value="#{turmaBean.periodos}" 
-                               var="umPeriodo"
-                               itemValue="#{umPeriodo}"
-                               itemLabel="#{umPeriodo.nome}"/>
-            </p:selectOneMenu>
-            <br></br>
-
-            <h:outputLabel value="dataInicio:" />
-            <p:calendar id="DataInicio" value="#{turmaBean.turma.dataInicio}" />
-            <br></br>
-            <h:outputLabel value="dataFim:" /> 
-            <p:calendar id="DataFim" value="#{turmaBean.turma.dataFim}" />
-            <br></br>
-            <p:commandButton action="#{turmaBean.salvar}" value="Enviar" ajax="false"/>
-        </h:form>
-    </h:body>
-
-
-</html>
-
+    <h:form>
+        <p:fieldset legend="Editar Aluno selecionado">
+            <p:panelGrid columns="2">
+                <h:outputLabel value="Nome" />    
+                <p:inputText required="true" id="inputNomeTurma" value="#{turmaBean.turma.nome}">
+                    <f:validator validatorId="validaImputString"/>
+                </p:inputText>                
+                <p:selectOneMenu id="periodos" value="#{turmaBean.turma.periodo}" >          
+                    <f:selectItem itemLabel=""
+                                itemValue=""
+                                noSelectionOption="true" /> 
+                    <f:selectItems value="#{turmaBean.periodos}" 
+                                var="umPeriodo"
+                                itemValue="#{umPeriodo}"
+                                itemLabel="#{umPeriodo.nome}"/>
+                </p:selectOneMenu>
+                <h:outputLabel value="dataInicio:" />
+                <p:calendar id="DataInicio" value="#{turmaBean.turma.dataInicio}" />
+                <br/>
+                <h:outputLabel value="dataFim:" /> 
+                <p:calendar id="DataFim" value="#{turmaBean.turma.dataFim}" />
+            </p:panelGrid>
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Editar" action="#{turmaBean.salvarTurma}" />
+                    <p:commandButton value="Cancelar" action="#{turmaBean.novaTurma}" />
+                </p:toolbarGroup>
+            </p:toolbar>
+            
+        </p:fieldset>
+    </h:form>
+</ui:decorate>

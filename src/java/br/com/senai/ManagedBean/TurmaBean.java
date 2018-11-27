@@ -6,8 +6,10 @@ import br.com.senai.Turma;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name = "turmaBean")
+@SessionScoped
 public class TurmaBean implements Serializable {
 
     private Turma turma = new Turma();
@@ -22,13 +24,13 @@ public class TurmaBean implements Serializable {
 
     public String novaTurma() {
         turma = new Turma();
-        return "editar-turma.xhtml";
+        return "gerenciar-turma.xhtml";
     }
 
-    public String salvarTurma() {
+    public String salvarTurma() {       
         TurmaDao dao = new TurmaDao();
         dao.salvarTurma(turma);
-        return "gerenciar-turma.xhtml";
+       return "gerenciar-turma.xhtml";
 
     }
 
@@ -49,17 +51,11 @@ public class TurmaBean implements Serializable {
     }
 
     public String editar() {
-        return "editar-turma.xhtml";
+        return "gerenciar-turma.xhtml";
     }
 
     public List<Periodo> getPeriodos() {
         return new TurmaDao().getAllPeriodos();
-    }
-
-    public String salvar() {
-        TurmaDao dao = new TurmaDao();
-        dao.salvarTurma(turma);
-        return "gerenciar-turma.xhtml";
     }
 
 }

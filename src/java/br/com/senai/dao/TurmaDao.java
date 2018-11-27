@@ -7,14 +7,20 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
-
 public class TurmaDao {
     
 public  Turma salvarTurma (Turma turma){
+    if(turma.getId() != null){
     Session session = HibernateUtil.getSessionFactory().openSession();
     session.getTransaction().begin();
     session.saveOrUpdate(turma);
     session.getTransaction().commit();
+    } else {
+     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.getTransaction().begin();
+    session.merge(turma);
+    session.getTransaction().commit();
+    }
     return turma;
 }
     public void excluirTurma (Turma turma){
@@ -34,8 +40,5 @@ public  Turma salvarTurma (Turma turma){
        return crit.list();
    }
 
-//    public void salvar(Turma turma) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
 }
 
