@@ -15,5 +15,6 @@
     <mapping class="br.com.senai.GradeHorario"/>
     <mapping class="br.com.senai.Turma"/>
     <mapping class="br.com.senai.Periodo"/>
+    <mapping class="br.com.senai.Coordenador"/>
   </session-factory>
 </hibernate-configuration>
