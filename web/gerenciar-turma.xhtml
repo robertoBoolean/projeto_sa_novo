@@ -1,14 +1,46 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+
+           <ui:decorate xmlns="http://www.w3.org/1999/xhtml"
              xmlns:h="http://xmlns.jcp.org/jsf/html"
              xmlns:p="http://primefaces.org/ui"
              xmlns:f="http://xmlns.jcp.org/jsf/core"
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              template="template.xhtml">
-    <h:form>
+   <h:form>
+        <p:fieldset legend="Editar Aluno">
+            <p:panelGrid columns="2">
+                <h:outputLabel value="Nome" />    
+                <p:inputText required="true" id="inputNomeTurma" value="#{turmaBean.turma.nome}">
+                    <f:validator validatorId="validaImputString"/>
+                </p:inputText>
+                <h:outputLabel value="Periodo" />                
+                <p:selectOneMenu id="periodos" value="#{turmaBean.turma.periodo}" > 
+                <f:selectItems value="#{turmaBean.periodos}" 
+                               var="umPeriodo"
+                               itemValue="#{umPeriodo}"
+                               itemLabel="#{umPeriodo.nome}"/>
+            </p:selectOneMenu>
+         
+                
+            <h:outputLabel value="Data de Inicio:" />
+            <p:calendar id="DataInicio" value="#{turmaBean.turma.dataInicio}" />
+           
+            <h:outputLabel value="Data Final:" />
+            <p:calendar id="DataFim" value="#{turmaBean.turma.dataFim}" />
+            
+            </p:panelGrid>
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Adicionar" action="#{turmaBean.salvarTurma}" update="formTabela" />
+                    <p:commandButton value="Cancelar" action="#{turmaBean.novaTurma}" update="@form"/>
+                </p:toolbarGroup>
+            </p:toolbar>
+            
+        </p:fieldset>
+    </h:form>
+               <h:form id="formTabela">
         <p:fieldset legend="Turmas">
-                <p:commandButton value="Adicionar" action="#{turmaBean.novaTurma}" ajax="false" />
         <p:dataTable value="#{turmaBean.turmas}" var="umaTurma">   
                 <p:column headerText="Nome">
                     <h:outputText value="#{umaTurma.nome}" />
@@ -27,7 +59,7 @@
                     </h:outputText>
                 </p:column>
                 <p:column headerText="Ações">
-                    <h:commandButton action="#{turmaBean.editar}" value="Editar">
+                    <h:commandButton action="#{turmaBean.editar}" value="Editar" >
                         <f:setPropertyActionListener value="#{umaTurma}" target="#{turmaBean.turma}" />
                     </h:commandButton>
                     <h:commandButton action="#{turmaBean.excluir}"  value="Excluir" >
@@ -36,5 +68,5 @@
                 </p:column>
             </p:dataTable>
         </p:fieldset>
-    </h:form>
+        </h:form>
 </ui:decorate>
