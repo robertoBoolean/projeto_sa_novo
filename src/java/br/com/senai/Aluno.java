@@ -6,9 +6,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+/**
+ * 
+ * @author Eduardo
+ * @author Rafael
+ * @author Roberto
+ * @version 1.0
+ * @since Java 5.0
+ */
 @Entity
 public class Aluno implements Serializable{
-    
+      
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

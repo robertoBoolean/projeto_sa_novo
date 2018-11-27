@@ -7,6 +7,15 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+/**
+ * 
+ * @author Eduardo
+ * @author Rafael
+ * @author Roberto
+ * @version 1.0
+ * @since Java 5.0
+ */
+
 @ManagedBean(name = "alunoBean")
 @SessionScoped
 public class AlunoBean implements Serializable{
