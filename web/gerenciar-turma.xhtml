@@ -8,17 +8,17 @@
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              template="template.xhtml">
    <h:form>
-        <p:fieldset legend="Editar Aluno">
+        <p:fieldset legend="Editar Turma">
             <p:panelGrid columns="2">
                 <h:outputLabel value="Nome" />    
                 <p:inputText required="true" id="inputNomeTurma" value="#{turmaBean.turma.nome}">
                     <f:validator validatorId="validaImputString"/>
                 </p:inputText>
                 <h:outputLabel value="Periodo" />                
-                <p:selectOneMenu id="periodos" value="#{turmaBean.turma.periodo}" > 
-                <f:selectItems value="#{turmaBean.periodos}" 
+                <p:selectOneMenu id="gradeHorario" value="#{turmaBean.gradeHorario}" > 
+                    <f:selectItems value="#{turmaBean.gradeHorario}" 
                                var="umPeriodo"
-                               itemValue="#{umPeriodo}"
+                               itemValue="#{umPeriodo.id}"
                                itemLabel="#{umPeriodo.nome}"/>
             </p:selectOneMenu>
          

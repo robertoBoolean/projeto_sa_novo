@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import br.com.senai.GradeHorario;
 
 
 @Entity
@@ -18,8 +20,10 @@ public class Turma implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nome;
-    @ManyToOne
-    Periodo periodo;
+    @OneToOne
+    GradeHorario gradeHorario;
+    /*@ManyToOne
+    Periodo periodo;*/
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataInicio;
@@ -42,13 +46,6 @@ public class Turma implements Serializable {
         this.nome = nome;
     }
 
-    public Periodo getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(Periodo periodo) {
-        this.periodo = periodo;
-    }
 
     public Date getDataInicio() {
         return dataInicio;

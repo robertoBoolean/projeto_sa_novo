@@ -1,8 +1,9 @@
 package br.com.senai.ManagedBean;
 
-import br.com.senai.Periodo;
+import br.com.senai.GradeHorario;
 import br.com.senai.dao.TurmaDao;
 import br.com.senai.Turma;
+import br.com.senai.dao.GradeHorarioDao;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -11,7 +12,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "turmaBean")
 @SessionScoped
 public class TurmaBean implements Serializable {
-
+   
     private Turma turma = new Turma();
     
      /**
@@ -68,8 +69,8 @@ public class TurmaBean implements Serializable {
         return "gerenciar-turma.xhtml";
     }
 
-    public List<Periodo> getPeriodos() {
-        return new TurmaDao().getAllPeriodos();
+    public List<GradeHorario> getGradeHorario() {
+        return new GradeHorarioDao().getAll();
     }
 
 }
