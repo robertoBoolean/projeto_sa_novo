@@ -23,6 +23,20 @@ public class AlunoBean implements Serializable{
     private AlunoDao alunoDao = new AlunoDao();
     private List<Aluno> alunos = alunoDao.getAll();
     
+    /**
+     * @author Rafael S
+     * filtroAlunos é utilizado para a seleção de alunos da tabela para aplicar a função liberar na tela de liberação
+     **/
+    private List<Aluno> filtroAlunos;
+
+    public List<Aluno> getFiltroAlunos() {
+        return filtroAlunos;
+    }
+
+    public void setFiltroAlunos(List<Aluno> filtroAlunos) {
+        this.filtroAlunos = filtroAlunos;
+    }
+    
     public String adicionarAluno(){
         
         alunoDao.salvar(aluno);

@@ -13,6 +13,20 @@ import javax.faces.bean.SessionScoped;
 public class TurmaBean implements Serializable {
 
     private Turma turma = new Turma();
+    
+     /**
+     * @author Rafael S
+     * filtroTurmas é utilizado para a seleção de turmas da tabela para aplicar a função liberar na tela de liberação
+     **/
+    private List<Turma> filtroTurmas;
+
+    public List<Turma> getFiltroTurmas() {
+        return filtroTurmas;
+    }
+
+    public void setFiltroTurmas(List<Turma> filtroTurmas) {
+        this.filtroTurmas = filtroTurmas;
+    }
 
     public Turma getTurma() {
         return turma;

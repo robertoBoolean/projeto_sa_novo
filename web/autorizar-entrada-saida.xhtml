@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form>
+        <p:fieldset legend="Autorizar">
+            <p:panelGrid columns="2" >
+                <p:tabView style="border: none;">
+                    <!--TABELA ALUNO!-->
+                    <p:tab title="Aluno">
+                        <p:dataTable id ="tblAlunos"
+                                     value="#{alunoBean.alunos}" var="umAluno" rowKey="#{umAluno.id}"
+                                     widgetVar="tabelaAluno"
+                                     emptyMessage="Aluno não encontrado" filteredValue="#{alunoBean.filtroAlunos}">
+                            <f:facet name="header">
+                                <p:outputPanel>
+                                    <p:inputText id="globalFilter" onkeyup="PF('tabelaAluno').filter()" style="width:150px" placeholder="Procurar"/>
+                                </p:outputPanel>
+                            </f:facet>
+
+                            <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+                            <p:column headerText="Nome" filterBy="#{umAluno.nome}" filterMatchMode="startsWith" filterStyle = "display: none;">
+                                <h:outputText value="#{umAluno.nome}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Matricula" filterBy="#{umAluno.matricula}" filterMatchMode="startsWith" filterStyle = "display: none;">
+                                <h:outputText value="#{umAluno.matricula}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:tab> 
+                    <!--TABELA TURMA!-->
+                    <p:tab title="Turma">
+                        <p:dataTable value="#{turmaBean.turmas}" var="umaTurma" rowKey="#{umaTurma.id}"
+                                     widgetVar="tabelaTurma"
+                                     emptyMessage="Turma não encontrada" filteredValue="#{turmaBean.filtroTurmas}">                            
+                            <f:facet name="header">
+                                <p:outputPanel>
+                                    <p:inputText id="globalFilter" onkeyup="PF('tabelaTurma').filter()" style="width:150px" placeholder="Procurar"/>
+                                </p:outputPanel>                           
+                            </f:facet>
+                            
+                            <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+                            <p:column headerText="Nome" filterBy="#{umaTurma.nome}" filterMatchMode="startsWith" filterStyle = "display: none;">
+                                <h:outputText value="#{umaTurma.nome}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Periodo" filterBy="#{umaTurma.periodo}" filterMatchMode="startsWith" filterStyle = "display: none;">
+                                <h:outputText value="#{umaTurma.periodo}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:tab>               
+                </p:tabView>
+                <p:tabView style="border: none; width: 300px;">
+                    <p:tab title="Entrada">
+                        <h:outputText value="Escolha um horário" />
+                        <p:calendar value="" pattern="HH:mm" timeOnly="true"/>
+                        <p:toolbar style="position: relative; border: none; top: 30px;">
+                            <p:toolbarGroup>
+                                <p:commandButton value="Autorizar Entrada" update="@form" style="position: relative; left: 25px;"/>
+                            </p:toolbarGroup>
+                        </p:toolbar>
+                    </p:tab>
+                    <p:tab title="Saída">
+                        <h:outputText value="Escolha um horário" />
+                        <p:calendar value="" pattern="HH:mm" timeOnly="true"/>
+                        <p:toolbar style="position: relative; border: none; top: 30px;">
+                            <p:toolbarGroup>
+                                <p:commandButton value="Autorizar Saída" update="@form" style="position: relative; left: 35px;"/>
+                            </p:toolbarGroup>
+                        </p:toolbar>
+                    </p:tab>
+                </p:tabView>
+            </p:panelGrid>
+        </p:fieldset>
+    </h:form>
+</ui:decorate>
+
