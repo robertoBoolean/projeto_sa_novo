@@ -28,13 +28,12 @@ public class Liberacao implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
-    @OneToMany
+    @ManyToOne
     Aluno alunos;
     
-    @OneToMany
+    @ManyToOne
     Turma turmas;
             
-    @OneToMany
     Coordenador coordenador;    
     
     @Temporal(javax.persistence.TemporalType.DATE)
