@@ -6,21 +6,23 @@ import br.com.senai.Turma;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-
+/**
+ * 
+ * @author Jose
+ * @author Leticia
+ * @author Renato
+ * @since java 7.0
+ * @see Turma
+ * Esta Classe salva e Envia, para Banco de Dados.
+ * 
+ */
 public class TurmaDao {
     
 public  Turma salvarTurma (Turma turma){
-    if(turma.getId() != null){
     Session session = HibernateUtil.getSessionFactory().openSession();
     session.getTransaction().begin();
     session.saveOrUpdate(turma);
     session.getTransaction().commit();
-    } else {
-     Session session = HibernateUtil.getSessionFactory().openSession();
-    session.getTransaction().begin();
-    session.merge(turma);
-    session.getTransaction().commit();
-    }
     return turma;
 }
     public void excluirTurma (Turma turma){

@@ -6,7 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+ /**
+  * 
+  * @author Jose
+  * @author Leticia
+  * @author Renato
+  * @since java 7.0
+  *
+  * @deprecated Não esta sendo utilizado, veja a GradeHorario.
+  */
 @Entity
 public class Periodo implements Serializable {
     

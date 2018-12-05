@@ -3,14 +3,25 @@ package br.com.senai;
 import java.io.Serializable;
 /*import java.util.Date;*/
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
-import br.com.senai.GradeHorario;
+/**
+ * 
+ * @author Jose 
+ * @author Leticia
+ * @author Renato
+ * @version 2.1
+ * @since java 7.0
+ * @see Aluno    
+ * @see GradeHorario
+ * Classe de Entidade Turma, onde são instaciados os valores.
+ * 
+ */
 
 
 @Entity
@@ -20,11 +31,9 @@ public class Turma implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nome;
-    @OneToOne
+    @ManyToOne
     GradeHorario gradeHorario;
-    /*@ManyToOne
-    Periodo periodo;*/
-    
+   
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataInicio;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -62,4 +71,39 @@ public class Turma implements Serializable {
     public void setDataFim(Date dataFim) {
         this.dataFim = dataFim;
     }
+
+    public GradeHorario getGradeHorario() {
+        return gradeHorario;
+    }
+
+    public void setGradeHorario(GradeHorario gradeHorario) {
+        this.gradeHorario = gradeHorario;
+    }
+   
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Turma other = (Turma) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

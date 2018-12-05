@@ -9,32 +9,38 @@
              template="template.xhtml">
     
 
-    <h:form>
-        <p:fieldset legend="Editar Aluno selecionado">
+    <h:form id="formTurma">
+        <p:fieldset legend="Editar Turma">
             <p:panelGrid columns="2">
                 <h:outputLabel value="Nome" />    
                 <p:inputText required="true" id="inputNomeTurma" value="#{turmaBean.turma.nome}">
                     <f:validator validatorId="validaImputString"/>
-                </p:inputText>                
-                <p:selectOneMenu id="periodos" value="#{turmaBean.turma.periodo}" >          
+                </p:inputText>
+                <h:outputLabel value="Grade de Horários" />                
+                <p:selectOneMenu id="horarios" value="#{turmaBean.turma.gradeHorario}" >          
                     <f:selectItem itemLabel=""
                                 itemValue=""
                                 noSelectionOption="true" /> 
-                    <f:selectItems value="#{turmaBean.periodos}" 
-                                var="umPeriodo"
-                                itemValue="#{umPeriodo}"
-                                itemLabel="#{umPeriodo.nome}"/>
+                    <f:selectItems value="#{gradeHorarioBean.horarios}" 
+                                var="umaGrade"
+                                itemValue="#{umaGrade}"
+                                itemLabel="#{umaGrade.nome}"
+                                />
                 </p:selectOneMenu>
-                <h:outputLabel value="dataInicio:" />
-                <p:calendar id="DataInicio" value="#{turmaBean.turma.dataInicio}" />
-                <br/>
-                <h:outputLabel value="dataFim:" /> 
-                <p:calendar id="DataFim" value="#{turmaBean.turma.dataFim}" />
+         
+         
+                
+            <h:outputLabel value="Data de Inicio:" />
+            <p:calendar id="DataInicio" value="#{turmaBean.turma.dataInicio}" />
+           
+            <h:outputLabel value="Data Final:" />
+            <p:calendar id="DataFim" value="#{turmaBean.turma.dataFim}" />
+            
             </p:panelGrid>
             <p:toolbar>
                 <p:toolbarGroup>
-                    <p:commandButton value="Editar" action="#{turmaBean.salvarTurma}" />
-                    <p:commandButton value="Cancelar" action="#{turmaBean.novaTurma}" />
+                    <p:commandButton value="Salvar" action="#{turmaBean.salvarTurma}" update="formTurma" />
+                    <p:commandButton value="Cancelar" action="#{turmaBean.listarTurma}" update="formTurma" />
                 </p:toolbarGroup>
             </p:toolbar>
             
