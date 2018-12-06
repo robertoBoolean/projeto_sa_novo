@@ -53,6 +53,7 @@ public class TurmaBean implements Serializable {
     public String excluir() {
         TurmaDao dao = new TurmaDao();
         dao.excluirTurma(turma);
+        turma = new Turma();
         return "gerenciar-turma.xhtml";
     }
 
