@@ -1,6 +1,7 @@
 package br.com.senai;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * 
@@ -27,6 +29,9 @@ public class Aluno implements Serializable{
     private String matricula;
     private Date nascimento;
     private String turma;
+    
+    @OneToMany(mappedBy = "aluno")
+    private List<Guarita> guaritas = new ArrayList<>();
 
     public Date getNascimento() {
         return nascimento;
@@ -66,6 +71,14 @@ public class Aluno implements Serializable{
 
     public void setTurma(String turma) {
         this.turma = turma;
+    }
+
+    public List<Guarita> getGuaritas() {
+        return guaritas;
+    }
+
+    public void setGuaritas(List<Guarita> guaritas) {
+        this.guaritas = guaritas;
     }
   
 }
