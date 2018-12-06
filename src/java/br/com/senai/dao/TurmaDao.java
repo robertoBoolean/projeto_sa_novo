@@ -41,6 +41,14 @@ public  Turma salvarTurma (Turma turma){
        Criteria crit = session.createCriteria(Periodo.class);
        return crit.list();
    }
-
+   
+   public Turma getById(Integer id) {
+        Turma turma = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        turma = (Turma) session.get(Turma.class, id);
+        session.getTransaction().commit();
+        return turma;
+    }
 }
 

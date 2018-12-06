@@ -22,7 +22,6 @@ public class CursoBean implements Serializable{
     private Curso curso = new Curso();
     private CursoDao cursoDao = new CursoDao();
     private List<Curso> cursos = cursoDao.getAll();
-    private EntradaDao entradaDao = new EntradaDao();
     
     /**
      * Metodo para realizar o cancelamento de cadastro/edicao de Curso
@@ -43,7 +42,6 @@ public class CursoBean implements Serializable{
     }
 
     public List<Curso> getCursos() {
-        entradaDao.realizarEntrada("1");
         return cursos;
     }
 

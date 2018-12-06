@@ -1,9 +1,11 @@
 package br.com.senai.dao;
 
 import br.com.senai.GradeHorario;
+import br.com.senai.Turma;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 public class GradeHorarioDao {
     public GradeHorario salvar(GradeHorario horario){
@@ -36,5 +38,16 @@ public class GradeHorarioDao {
         session.getTransaction().begin();
         session.delete(horario);
         session.getTransaction().commit();
+    }
+    
+    public GradeHorario buscarByTurma(Turma turma) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<GradeHorario> lista = session.createCriteria(GradeHorario.class).
+               add(Restrictions.eq( "turma", turma)).list();
+        if (lista.isEmpty()) {
+            return null;
+        } else {
+            return lista.get(0);
+        }
     }
 }
