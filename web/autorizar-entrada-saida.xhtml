@@ -6,6 +6,16 @@
              template="template.xhtml"
              xmlns:p="http://primefaces.org/ui"
              xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <script type="text/javascript">
+        function handleLoginRequest(xhr, status, args) {
+            if (args.validationFailed || !args.loggedIn) {
+                PF('dlg').jq.effect("shake", {times: 5}, 100);
+            } else {
+                PF('dlg').hide();
+                $('#loginLink').fadeOut();
+            }
+        }
+    </script>
     <h:form>
         <p:fieldset legend="Autorizar">
             <p:panelGrid columns="2" >
@@ -26,7 +36,7 @@
                             <p:column headerText="Nome" filterBy="#{umAluno.nome}" filterMatchMode="startsWith" filterStyle = "display: none;">
                                 <h:outputText value="#{umAluno.nome}"/>
                             </p:column>
-                            
+
                             <p:column headerText="Matricula" filterBy="#{umAluno.matricula}" filterMatchMode="startsWith" filterStyle = "display: none;">
                                 <h:outputText value="#{umAluno.matricula}"/>
                             </p:column>
@@ -42,12 +52,12 @@
                                     <p:inputText id="globalFilter" onkeyup="PF('tabelaTurma').filter()" style="width:150px" placeholder="Procurar"/>
                                 </p:outputPanel>                           
                             </f:facet>
-                            
+
                             <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
                             <p:column headerText="Nome" filterBy="#{umaTurma.nome}" filterMatchMode="startsWith" filterStyle = "display: none;">
                                 <h:outputText value="#{umaTurma.nome}"/>
                             </p:column>
-                            
+
                             <p:column headerText="Periodo" filterBy="#{umaTurma.periodo}" filterMatchMode="startsWith" filterStyle = "display: none;">
                                 <h:outputText value="#{umaTurma.periodo}"/>
                             </p:column>
@@ -60,7 +70,7 @@
                         <p:calendar value="" pattern="HH:mm" timeOnly="true"/>
                         <p:toolbar style="position: relative; border: none; top: 30px;">
                             <p:toolbarGroup>
-                                <p:commandButton value="Autorizar Entrada" update="@form" style="position: relative; left: 25px;"/>
+                                <p:commandButton value="Autorizar Entrada" update="@form" style="position: relative; left: 25px;"  onclick="PF('dlg').show();"/>
                             </p:toolbarGroup>
                         </p:toolbar>
                     </p:tab>
@@ -69,13 +79,31 @@
                         <p:calendar value="" pattern="HH:mm" timeOnly="true"/>
                         <p:toolbar style="position: relative; border: none; top: 30px;">
                             <p:toolbarGroup>
-                                <p:commandButton value="Autorizar Saída" update="@form" style="position: relative; left: 35px;"/>
+                                <p:commandButton value="Autorizar Saída" update="@form" style="position: relative; left: 35px;"  onclick="PF('dlg').show();"/>
                             </p:toolbarGroup>
                         </p:toolbar>
                     </p:tab>
                 </p:tabView>
             </p:panelGrid>
         </p:fieldset>
+    </h:form>
+    <h:form>        
+        <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+        <p:dialog header="Login" widgetVar="dlg" resizable="false">
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="username" value="Usuário:" />
+                <p:inputText id="username" value="#{coordenadorBean.usuario}" required="true" label="username" />
+
+                <h:outputLabel for="password" value="Senha:" />
+                <p:password id="password" value="#{coordenadorBean.senha}" required="true" label="password" />
+
+                <f:facet name="footer">
+                    <p:commandButton value="Confirmar" update="growl" action="#{coordenadorBean.login}"
+                                     oncomplete="handleLoginRequest(xhr, status, args)" />
+                </f:facet>  
+            </h:panelGrid>
+        </p:dialog>    
     </h:form>
 </ui:decorate>
 
