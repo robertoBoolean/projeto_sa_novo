@@ -25,8 +25,8 @@ public class EntradaDao {
         }
 
 //        apos refatoração no modelo da turma descomentar a linha abaixo
-//        Turma turma = turmaDao.getById(aluno.getTurma().getId());
-        Turma turma = turmaDao.getById(Integer.parseInt(aluno.getTurma()));
+        Turma turma = turmaDao.getById(aluno.getTurmaR().getId());
+//        Turma turma = turmaDao.getById(Integer.parseInt(aluno.getTurma()));
         GradeHorario gradeHorario = gradeHorarioDao.buscarByTurma(turma);
         Guarita guaritaComEntrada = buscarEntrada(aluno.getId());
         if ((gradeHorario.getHr_inicio().before(dataAtual) || gradeHorario.getHr_inicio().equals(dataAtual))

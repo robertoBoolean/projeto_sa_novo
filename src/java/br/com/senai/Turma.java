@@ -1,14 +1,17 @@
 package br.com.senai;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 /*import java.util.Date;*/
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 /**
  * 
@@ -38,7 +41,23 @@ public class Turma implements Serializable {
     private Date dataInicio;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataFim;
+    
+    @OneToMany(mappedBy = "turmaR")
+    private List<Aluno> alunos = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "turma")
+    private List<GradeHorario> gradeHorarios = new ArrayList<>();
 
+    public List<GradeHorario> getGradeHorarios() {
+        return gradeHorarios;
+    }
+
+    public void setGradeHorarios(List<GradeHorario> gradeHorarios) {
+        this.gradeHorarios = gradeHorarios;
+    }
+
+    
+    
     public Integer getId() {
         return id;
     }
@@ -79,6 +98,16 @@ public class Turma implements Serializable {
     public void setGradeHorario(GradeHorario gradeHorario) {
         this.gradeHorario = gradeHorario;
     }
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+    
+    
    
     @Override
     public int hashCode() {

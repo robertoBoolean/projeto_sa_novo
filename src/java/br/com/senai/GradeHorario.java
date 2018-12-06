@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class GradeHorario implements Serializable{
@@ -15,6 +17,18 @@ public class GradeHorario implements Serializable{
     private String nome;
     private Date hr_inicio;
     private Date hr_fim;
+    @ManyToOne
+    private Turma turma;
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
+    }
+    
+    
     
     public Integer getId() {
         return id;

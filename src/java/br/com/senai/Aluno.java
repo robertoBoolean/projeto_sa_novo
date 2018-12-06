@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -29,6 +31,10 @@ public class Aluno implements Serializable{
     private String matricula;
     private Date nascimento;
     private String turma;
+    
+    @JoinColumn(name = "turma_id")
+    @ManyToOne
+    private Turma turmaR;
     
     @OneToMany(mappedBy = "aluno")
     private List<Guarita> guaritas = new ArrayList<>();
@@ -80,5 +86,15 @@ public class Aluno implements Serializable{
     public void setGuaritas(List<Guarita> guaritas) {
         this.guaritas = guaritas;
     }
+
+    public Turma getTurmaR() {
+        return turmaR;
+    }
+
+    public void setTurmaR(Turma turmaR) {
+        this.turmaR = turmaR;
+    }
+    
+    
   
 }
