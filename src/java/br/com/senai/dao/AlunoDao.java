@@ -3,7 +3,9 @@ package br.com.senai.dao;
 import br.com.senai.Aluno;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  * 
@@ -61,5 +63,17 @@ public class AlunoDao {
         session.getTransaction().begin();
         session.delete(aluno);
         session.getTransaction().commit();
+    }
+    
+    public Aluno getByMatricula(String matricula) {
+        Aluno aluno = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Aluno> lista = session.createCriteria(Aluno.class).
+               add(Restrictions.eq( "matricula", matricula)).list();
+        if (lista.isEmpty()) {
+            return null;
+        } else {
+            return lista.get(0);   
+        }
     }
 }

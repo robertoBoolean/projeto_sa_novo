@@ -5,6 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+/**
+ * Classe para gerenciamento de Curso
+ * @author Adriano Rodrigues
+ * @author Luis Henrique
+ */
+
 @Entity
 public class Curso implements Serializable{
     
@@ -27,5 +34,5 @@ public class Curso implements Serializable{
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
+    }  
 }

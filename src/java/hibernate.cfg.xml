@@ -17,5 +17,6 @@
     <mapping class="br.com.senai.Periodo"/>
     <mapping class="br.com.senai.Coordenador"/>
     <mapping class="br.com.senai.Liberacao"/>
+    <mapping class="br.com.senai.Guarita"/>
   </session-factory>
 </hibernate-configuration>
